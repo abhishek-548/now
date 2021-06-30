@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- question icon -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="page.css">
+
+<style>
+	@import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
+
+*{
+	box-sizing: border-box;
+
+}
+
+body {
+	background: black;
+	text-align: center;
+	margin: 0px;
+	padding : 0px; 
+	font-family: 'Montserrat', sans-serif;
+}
+#container{
+	height: 230px;
+	width: 1100px;
+	margin-top: 100px;
+	margin-left: 10%;
+	display: flex;
+}
+#newquestion{
+	flex: 1;
+	height: 100%;
+	margin-right: 40px;
+	border-radius: 10px;
+	background-color: #267DFF;
+	text-align: center;
+	cursor: pointer;
+	overflow: hidden;
+}
+#newquestion:hover{
+	transform: scale(1.2);
+	height: 140%;
+	overflow: visible;
+}
+#amend{
+	flex: 1;
+	height: 100%;
+	margin-right: 40px;
+	border-radius: 10px;
+	background-color: #267DFF;
+	text-align: center;
+	cursor: pointer;
+	overflow: hidden;
+}
+#amend:hover{
+	transform: scale(1.2);
+	height: 140%;
+	overflow: visible;
+}
+#newentity{
+	flex: 1;
+	height: 100%;
+	border-radius: 10px;
+	background-color: #267DFF;
+	text-align: center;
+	cursor: pointer;
+	overflow: hidden;
+}
+#newentity:hover{
+	transform: scale(1.2);
+	height: 140%;
+	overflow: visible;
+}
+button {
+	border-radius: 20px;
+	border: 1px solid white;
+	background-color: white;
+	color: #267DFF;
+	font-size: 12px;
+	font-weight: bold;
+	padding: 12px 45px;
+	letter-spacing: 1px;
+	cursor: pointer;
+	text-transform: uppercase;
+	transition: transform 80ms ease-in;
+}
+
+button:active {
+	transform: scale(0.95);
+}
+
+button:focus {
+	outline: none;
+}
+
+button.ghost {
+	background-color: transparent;
+	border-color: #FFFFFF;
+}
+
+.z{
+	text-decoration: none;
+	color: #267DFF;
+}
+
+@media screen and (max-width: 1220px){
+	body{
+		background: black;
+		text-align: center;
+		margin: 0px;
+		padding : 0px; 
+		font-family: 'Montserrat', sans-serif;
+	}
+	#container{
+		margin: auto;
+		text-align: center;
+		width: auto;
+		height: auto;
+		display: block;
+		margin: 0px;
+	}
+	#newquestion{
+		cursor: pointer;
+		margin: auto;
+		height: 350px;
+		width: 300px;
+		border-radius: 10px;
+		margin-bottom: 50px;
+		margin-left: 20px;
+	}
+	#newquestion:hover{
+		transform: scale(1);
+		height: 350px;
+	}
+	#amend{
+		cursor: pointer;
+		margin: auto;
+		height: 350px;
+		width: 300px;
+		margin-bottom: 50px;
+		border-radius: 10px;
+		background-color: #267DFF;
+		margin-top: -398px;
+	}
+	#amend:hover{
+		transform: scale(1);
+		height: 350px;
+	}
+	#newentity{
+		margin: auto;
+		height: 350px;
+		width: 300px;
+		margin-bottom: 50px;
+		border-radius: 10px;
+		background-color: #267DFF;
+		margin-right: 20px;
+		margin-top: -400px;
+		cursor: pointer;
+	}
+	#newentity:hover{
+		transform: scale(1);
+		height: 350px;
+	}
+
+}
+
+@media screen and (max-width: 800px){
+	body{
+		background: black;
+		text-align: center;
+		margin: 0px;
+		padding : 0px; 
+		font-family: 'Montserrat', sans-serif;
+	}
+	#container{
+		margin: auto;
+		text-align: center;
+		width: auto;
+		height: auto;
+		display: block;
+		margin: 0px;
+	}
+	#newquestion{
+		margin: auto;
+		height: 350px;
+		width: 300px;
+		margin-bottom: 50px;
+		border-radius: 10px;
+		background-color: #267DFF;
+		text-align: center;
+		cursor: pointer;
+	}
+	#newquestion:hover{
+		transform: scale(1);
+		height: 350px;
+	}
+	#amend{
+		margin: auto;
+		height: 350px;
+		width: 300px;
+		margin-bottom: 50px;
+		border-radius: 10px;
+		background-color: #267DFF;
+		text-align: center;
+		cursor: pointer;
+	}
+	#amend:hover{
+		transform: scale(1);
+		height: 350px;
+	}
+	#newentity{
+		margin: auto;
+		height: 350px;
+		width: 300px;
+		margin-bottom: 50px;
+		border-radius: 10px;
+		background-color: #267DFF;
+		text-align: center;
+		cursor: pointer;
+	}
+	#newentity:hover{
+		transform: scale(1);
+		height: 350px;
+	}
+
+}
+	</style>
+</head>
+<body>
+	<br><br>
+	<h2 style="color:white;">ADD NEW QUESTION FOR ?</h2>
+	<div id="container">
+		<div id="newquestion">
+			<br><br>
+			<i class="fa fa-question-circle" style="font-size:48px;color:#267DFF;border-radius: 50%;background-color: white;padding: 20px;"></i>
+			<br>
+			<br>
+			<p style="color:white;font-weight: bold;">EQUIPMENT</p>
+			<br>
+			<p style="color:white;font-weight: bold;">
+				Click to add new question.
+			</p>
+			<button>
+				<a class="z" href='/createque'>New Question</a>
+			</button>
+		</div>
+		<div id="amend">
+			<br><br>
+			<i class="fa fa-edit" style="font-size:48px;color:#267DFF;border-radius: 50%;background-color: white;padding: 20px;"></i>
+			<br>
+			<br>
+			<p style="color:white;font-weight: bold;">PROCESS</p>
+			<br>
+			<p style="color:white;font-weight: bold;">
+				Click to add new question.
+			</p>
+			<button>
+				New Question
+			</button>
+		</div>
+		<div id="newentity">
+			<br><br>
+			<i class="fa fa-cubes" style="font-size:48px;color:#267DFF;border-radius: 50%;background-color: white;padding: 20px;"></i>
+			<br>
+			<br>
+			<p style="color:white;font-weight: bold;">COURSES</p>
+			<br>
+			<p style="color:white;font-weight: bold;">
+				Click to add new question.
+			</p>
+			<button>
+				New Question
+			</button>
+		</div>
+	</div>
+</body>
+</html>

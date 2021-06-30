@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="amendequipment.css">
+	<style>
+		@import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
+body{
+	margin: 0px;
+	padding: 0px;
+	font-family: 'Montserrat', sans-serif;
+	background-color: #F0F6FF;
+}
+#maincontainer{
+	display: flex;
+}
+#leftcontainer{
+	flex: 1;
+	height: auto;
+	width: auto;
+	margin-left: 100px;
+}
+#rightcontainer{
+	flex: 1;
+	height: auto;
+	width: auto;
+}
+#leftcontainer input{
+	width: 450px;
+	height: 50px;
+}
+#rightcontainer input{
+	width: 550px;
+	height: 50px;
+}
+input{
+	border: 2px solid #267DFF;
+}
+input:focus{
+	outline: none;
+}
+#searchequipment{
+	margin-top: 50px;
+	height: 400px;
+	width: 450px;
+	overflow-y: scroll;
+	border-radius: 12px;
+	background-color: white;
+	border:1px solid rgb(214, 216, 222);
+	box-shadow: rgba(43, 54, 72, 0.06) 0px 3px 5px 4px;
+}
+#searchequipment::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.1);
+	border-radius: 10px;
+	background-color: #F5F5F5;
+
+}
+
+#searchequipment::-webkit-scrollbar
+{
+	width: 8px;
+	background-color: #F5F5F5;
+}
+
+#searchequipment::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: #267DFF;
+}
+.special{
+	height: 200px;
+	overflow-y: scroll;
+	width: 350px;
+	border-radius: 12px;
+	background-color: white;
+	border:1px solid rgb(214, 216, 222);
+	box-shadow: rgba(43, 54, 72, 0.06) 0px 3px 5px 4px;
+	opacity: 1;
+	display: none;
+}
+.special span{
+	cursor: pointer;
+	border: 2px solid #267DFF;
+	padding: 10px;
+	width: 150px;
+	display: block;
+	margin-bottom: 20px;
+	margin-left: 20px;
+}
+.special::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.1);
+	border-radius: 10px;
+	background-color: #F5F5F5;
+
+}
+
+.special::-webkit-scrollbar
+{
+	width: 8px;
+	background-color: #F5F5F5;
+}
+
+.special::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: #267DFF;
+}
+#jss{
+	font-size: 23px;
+	color:#267DFF;
+	margin-right: 10px;
+	cursor: pointer;
+	font-weight: bold;
+}
+#answers{
+	margin-top: 50px;
+	height: 400px;
+	width: 550px;
+	overflow-y: scroll;
+	border-radius: 12px;
+	background-color: white;
+	border:1px solid rgb(214, 216, 222);
+	box-shadow: rgba(43, 54, 72, 0.06) 0px 3px 5px 4px;
+}
+#answers::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.1);
+	border-radius: 10px;
+	background-color: #F5F5F5;
+
+}
+
+#answers::-webkit-scrollbar
+{
+	width: 8px;
+	background-color: #F5F5F5;
+}
+
+#answers::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: #267DFF;
+}
+#answersin{
+	margin-left: 30px;
+}
+#editbtn{
+	float: right;
+	cursor: pointer;
+	width: 50px;
+	margin-bottom: 5px;
+	margin-right: 50px;
+	border : 2px solid #267DFF;
+	background-color: white;
+}
+#textarea1{
+	white-space: normal;
+	border : 2px solid #267DFF;
+	resize: none;
+	border-top-right-radius: 3px;
+	border-top-left-radius: 3px;
+	cursor: no-drop;
+}
+#textarea1:focus{
+	outline: none;
+}
+#textarea1::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.1);
+	border-radius: 10px;
+	background-color: #F5F5F5;
+
+}
+
+#textarea1::-webkit-scrollbar
+{
+	width: 8px;
+	background-color: #F5F5F5;
+}
+
+#textarea1::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: #267DFF;
+}
+#textarea2{
+	white-space: normal;
+	margin-top: -4px;
+	border : 2px solid #267DFF;
+	resize: none;
+	cursor: no-drop;
+	border-bottom-left-radius: 3px;
+	border-bottom-right-radius: 3px;
+}
+#textarea2:focus{
+	outline: none;
+}
+#textarea2::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.1);
+	border-radius: 10px;
+	background-color: #F5F5F5;
+
+}
+
+#textarea2::-webkit-scrollbar
+{
+	width: 8px;
+	background-color: #F5F5F5;
+}
+
+#textarea2::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: #267DFF;
+}
+#clickicon{
+	color:red;
+}
+#submitbutton{
+	width: 200px;
+	height: 50px;
+	background-color: #267DFF;
+	color: white;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+@media screen and (max-width: 1000px){
+	#leftcontainer{
+		/*height: auto;
+		width: auto;*/
+		margin-left: 20px;
+		width: 95%;
+	}
+	#leftcontainer input{
+		width: 92%;
+		height: 50px;
+	}
+	#searchequipment{
+		margin-top: 50px;
+		height: 400px;
+		width: 95%;
+		overflow-y: scroll;
+		border-radius: 12px;
+		background-color: white;
+		border:1px solid rgb(214, 216, 222);
+		box-shadow: rgba(43, 54, 72, 0.06) 0px 3px 5px 4px;
+	}
+	#answers{
+		margin-top: 50px;
+		height: 400px;
+		width: 94%;
+		overflow-y: scroll;
+		border-radius: 12px;
+		background-color: white;
+		border:1px solid rgb(214, 216, 222);
+		box-shadow: rgba(43, 54, 72, 0.06) 0px 3px 5px 4px;
+	}
+	#answersin{
+		margin-left: 25px;
+	}
+	#answersin textarea{
+		width: 93%;
+	}
+	#editbtn{
+		margin-right: 15px;
+	}
+	#rightcontainer input{
+		width: 92%;
+		height: 50px;
+	}
+}
+
+@media screen and (max-width: 800px){
+	#leftcontainer{
+		/*height: auto;
+		width: auto;*/
+		margin-left: 20px;
+		width: 95%;
+	}
+	#leftcontainer input{
+		width: 92%;
+		height: 50px;
+	}
+	#searchequipment{
+		margin-top: 50px;
+		height: 400px;
+		width: 95%;
+		overflow-y: scroll;
+		border-radius: 12px;
+		background-color: white;
+		border:1px solid rgb(214, 216, 222);
+		box-shadow: rgba(43, 54, 72, 0.06) 0px 3px 5px 4px;
+	}
+	#answers{
+		margin-top: 50px;
+		height: 400px;
+		width: 94%;
+		overflow-y: scroll;
+		border-radius: 12px;
+		background-color: white;
+		border:1px solid rgb(214, 216, 222);
+		box-shadow: rgba(43, 54, 72, 0.06) 0px 3px 5px 4px;
+	}
+	#answersin{
+		margin-left: 20px;
+	}
+	#answersin textarea{
+		width: 93%;
+	}
+	#editbtn{
+		margin-right: 15px;
+	}
+	#rightcontainer input{
+		width: 92%;
+		height: 50px;
+	}
+}
+
+
+@media screen and (max-width: 600px){
+	#maincontainer{
+	  display: block;
+	}
+	#leftcontainer input{
+	  width: 95%;
+	  height: 50px;
+	}
+	#rightcontainer input{
+	  width: 95%;
+	  height: 50px;
+	}
+	#leftcontainer{
+	  height: auto;
+	  width: auto;
+	  margin-left: 10px;
+	}
+	#searchequipment{
+	  margin-top: 50px;
+	  height: 400px;
+	  width: 95%;
+	  overflow-y: scroll;
+	  border-radius: 12px;
+	  background-color: white;
+	  border:1px solid rgb(214, 216, 222);
+	  box-shadow: rgba(43, 54, 72, 0.06) 0px 3px 5px 4px;
+	}
+	#rightcontainer{
+	  margin-top: 50px;
+	  margin-left: 10px;
+	}
+	#answers{
+	  margin-top: 50px;
+	  height: 400px;
+	  width: 95%;
+	  overflow-y: scroll;
+	  border-radius: 12px;
+	  background-color: white;
+	  border:1px solid rgb(214, 216, 222);
+	  box-shadow: rgba(43, 54, 72, 0.06) 0px 3px 5px 4px;
+	}
+	#answersin{
+	  margin-left: 0px;
+	}
+	#answersin textarea{
+	  width: 97%;
+	}
+	#editbtn{
+	  margin-right: 10px;
+	}
+}
+	</style>
+</head>
+<body>
+	<br><br><br>
+	<div id="maincontainer">
+		<div id="leftcontainer">
+			<input id="leftinput" onkeyup="myFunction()" type="text" name="" placeholder="Search by equipment type..">
+			<br>
+			<div id="searchequipment">
+				<% for(var i=0;i<data.length;i++){ %>
+				<div id="one">
+				<p class="searchquestion" id="ptag" style="color:#267DFF;font-weight: bold;margin-left: 30px;">
+					<% var y1 = data[i].intent %>
+					<% y1 = y1.replace("c_","") %>
+					<%= y1 %>
+				</p>
+				<div id="answersforquestion">
+					<% var x = JSON.parse(data[i].answer) %>
+					<% for(var j=0;j<x.length;j++){ %>
+						<% var y = x[j].name %>
+						<% y = y.replace("intent_","") %>
+						<p id="ptag1" style="margin-left: 30px;">
+						<span onclick="remove(this)" style="font-size: 23px;color:#267DFF;margin-right: 10px;font-weight: bold;cursor: pointer;">
+						-
+						</span> 
+						<span class="equip"><%= y %></span>
+						</p>
+					<%}%>
+					<p style="margin-left: 30px;">
+						<span id="click" onclick="add(this)" style="font-size: 23px;color:#267DFF;margin-right: 10px;cursor: pointer;font-weight: bold;">
+							+
+						</span> 
+						<span id="add">Add Equipment</span>
+					</p>
+				</div>
+			</div>
+			<%}%>
+			<br>
+		</div>
+		</div>
+		<!-- <div id="rightcontainer">
+			<input id="rightinput" onkeyup="myFunction1()" type="text" name="" placeholder="Search by question title..">
+			<div id="answers">
+				<% for(var i=0;i<data.length;i++){ %>
+					<% var x = JSON.parse(data[i].answer) %>
+					<% for(var j=0;j<x.length;j++){ %>
+						<div id="answersin">
+						<% var y = x[j].name %>
+						<% y = y.replace("intent_","") %>
+						<p class="searchquestion1" style="color:#267DFF;font-weight: bold;">
+						<%= data[i].question %>(<%= y %>)
+						</p>
+						<button onclick="edit(this)" id="editbtn">
+						Edit
+						</button><br>
+						<textarea disabled="true" id="textarea1" placeholder="Enter Answer here.." rows="8" cols="63"><%= x[j].content %></textarea>
+						<textarea disabled="true" id="textarea2" rows="3" cols="63" placeholder="Enter Links here.." ><%= x[j].link %></textarea>
+					</div>
+					<br>
+					<%}%>
+				<%}%>
+			</div>
+		</div> -->
+		<div id="rightcontainer">
+			<input id="rightinput" onkeyup="myFunction1()" type="text" name="" placeholder="Search by question title..">
+			<div id="answers">
+				<% for(var i=0;i<data.length;i++){ %>
+					<% var x = JSON.parse(data[i].answer) %>
+					<% for(var j=0;j<x.length;j++){ %>
+						<div id="answersin">
+						<% var z = x[j].name %>
+						<% z = z.replace("intent_","") %>
+						<p class="searchquestion1" style="color:#267DFF;font-weight: bold;">
+						<% var y = data[i].intent %>
+						<% y = y.replace("c_","") %>
+						<%= y %>(<%= z %>)
+						</p>
+						<button onclick="edit(this)" id="editbtn">
+						Edit
+						</button><br>
+						<textarea disabled="true" id="textarea1" placeholder="Enter Answer here.." rows="8" cols="63"><%= x[j].content %></textarea>
+						<textarea disabled="true" id="textarea2" rows="3" cols="63" placeholder="Enter Links here.." ><%= x[j].link %></textarea>
+					</div>
+					<br>
+					<%}%>
+				<!-- <br> -->
+				<%}%>
+			</div>
+		</div>
+	</div>
+	<br><br>
+	<div style="text-align: center;">
+	<button id="submitbutton" onclick="send()">
+		Submit
+	</button>
+	</div>
+	
+	<div class="special">
+		<% var arr=[]%>
+				<% for(var i=0;i<data.length;i++){%>
+					<% var x = JSON.parse(data[i].answer) %>
+					<% for(var j=0;j<x.length;j++){ %>
+						<% var y = x[j].name %>
+						<% y = y.replace("intent_","") %>
+						<% if(! arr.includes(y)){ %>
+							<% arr.push(y.trim()) %>
+							<span onclick="append(this)">
+								<%= y %>
+							</span>
+						<%}%>
+					<%}%>
+				<%}%> 
+	</div>
+
+
+
+
+	<script type="text/javascript">
+		
+		var sendleft = [];
+		var sendright = [];
+		var par;
+		function remove(element){
+			if(! sendleft.includes(element.parentNode.parentNode.parentNode.children[0].innerText)){
+					sendleft.push(element.parentNode.parentNode.parentNode.children[0].innerText);
+				}
+				element.parentNode.remove();
+		}
+		function remove1(element){
+			// element.style.display = "none";  
+			console.log(element.parentNode);
+		}
+		function add(element){
+			var z =  element.nextElementSibling.innerHTML;
+			if(z=="Clear"){
+				var div = document.getElementsByClassName("special");
+				div[0].style.display = "none";
+				element.nextElementSibling.innerHTML = "Add Equipment";
+				element.innerHTML = "+";
+			}
+			else{
+			par = element.parentNode.parentNode;
+			if(! sendleft.includes(element.parentNode.parentNode.parentNode.children[0].innerText)){
+				sendleft.push(element.parentNode.parentNode.parentNode.children[0].innerText);
+		    }
+			element.nextElementSibling.innerHTML = "Clear";
+			element.innerHTML = "-"
+			var div = document.getElementsByClassName("special");
+			div[0].style.display = "block";
+			div[0].style.marginLeft = "30px";
+			element.parentNode.parentNode.parentNode.appendChild(div[0]);
+			}
+		}
+		function append(element){
+			var x = element.firstChild.nodeValue;
+			var parent = par
+			var p = document.createElement("P");
+			p.setAttribute("id","jsp");
+			var i = document.createElement("SPAN");
+			var i1 = document.createElement("SPAN");
+			i.innerHTML = "-";
+			i1.innerHTML = x;
+			i.style.fontSize = "20px";
+			i.style.marginLeft = "30px";
+			i1.style.marginLeft = "5px";
+			i.style.marginRight = "10px";
+			i.style.fontSize = "23px";
+			i.style.color = "#267DFF";
+			i.style.cursor = "pointer";
+			i.style.fontWeight = "bold";
+			i.setAttribute("id","clickicon");
+			p.appendChild(i);
+			p.appendChild(i1);
+			i.onclick = function() { 
+				i.parentNode.remove(); 
+			};
+			parent.insertBefore(p, parent.firstChild);
+		}
+		function edit(element){
+			var x = element.firstChild.nodeValue;
+			if(x.trim()=="Edit"){
+				if(! sendright.includes(element.parentNode.children[0].innerHTML)){
+					sendright.push(element.parentNode.children[0].innerHTML);
+				}
+				// console.log(element.parentNode.children[0].innerHTML);
+				// sendright.push(element.parentNode.children[0].innerHTML);
+				element.nextElementSibling.nextElementSibling.disabled = false;
+				element.nextElementSibling.nextElementSibling.nextElementSibling.disabled = false;
+				element.firstChild.nodeValue = "Save";
+				element.style.color = "white";
+				element.style.backgroundColor = "#267DFF";
+				element.nextElementSibling.nextElementSibling.style.cursor = "pointer";
+				element.nextElementSibling.nextElementSibling.nextElementSibling.style.cursor = "pointer";
+			}
+			else{
+				element.nextElementSibling.nextElementSibling.disabled = true;
+				element.nextElementSibling.nextElementSibling.nextElementSibling.disabled = true;
+				element.firstChild.nodeValue = "Edit";
+				element.style.color = "#267DFF";
+				element.style.backgroundColor = "white";
+				element.nextElementSibling.nextElementSibling.style.cursor = "no-drop";
+				element.nextElementSibling.nextElementSibling.nextElementSibling.style.cursor = "no-drop";
+			}
+		}
+		function myFunction() {
+	    var input, filter, ul, li, a, i, txtValue;
+	    input = document.getElementById("leftinput");
+	    filter = input.value.toUpperCase();
+	    // ul = document.getElementsByClassName("results");
+	    li = document.getElementsByClassName("searchquestion");
+	    // console.log(li[0].parentNode);
+	    for (i = 0; i < li.length; i++) {
+	        a = li[i];
+	        txtValue = a.textContent || a.innerText;
+	        if (txtValue.toUpperCase().indexOf(filter) > -1){
+	            li[i].parentNode.style.display = "";
+	        } 
+	        else {
+	            li[i].parentNode.style.display="none";
+	        }
+	    	}
+		}
+
+		function myFunction1() {
+	    var input, filter, ul, li, a, i, txtValue;
+	    input = document.getElementById("rightinput");
+	    filter = input.value.toUpperCase();
+	    // ul = document.getElementsByClassName("results");
+	    li = document.getElementsByClassName("searchquestion1");
+	    // console.log(li[0].parentNode);
+	    for (i = 0; i < li.length; i++) {
+	        a = li[i];
+	        txtValue = a.textContent || a.innerText;
+	        if (txtValue.toUpperCase().indexOf(filter) > -1){
+	            li[i].parentNode.style.display = "";
+	        } 
+	        else {
+	            li[i].parentNode.style.display="none";
+	        }
+	    	}
+		}
+
+
+
+
+
+		function send(){
+			var btn = [];
+			var btn1 = [];
+			var x = document.getElementById("searchequipment");
+			for(var i=0;i<sendleft.length;i++){
+				for(var j=0;j<x.children.length-1;j++){
+					var el = x.children[j].firstChild.nextElementSibling.innerHTML.trim();
+					// console.log(x.children[j].firstChild.nextElementSibling.innerHTML.trim());
+					if(el==sendleft[i]){
+						var ste = x.children[j].children[1].children;
+						var arr1 = []
+						for(var k=0;k<ste.length-1;k++){
+							arr1.push(ste[k].children[1].innerHTML);
+						}
+						var dict = {};
+						dict["name"] = sendleft[i];
+						dict["updated"] = arr1;
+						btn.push(dict);
+					}
+				}
+			}
+			// console.log(btn);
+
+			var y = document.getElementById("answers");
+			for(var i=0;i<sendright.length;i++){
+				for(var j=0;j<y.children.length;j+=2){
+					var du = y.children[j].children[0];
+					if(du.innerHTML==sendright[i]){
+						var dict = {};
+						dict["name"] = sendright[i];
+						dict["answers"] = y.children[j].children[3].value.trim();
+						dict["link"] = y.children[j].children[4].value.trim();
+						btn1.push(dict);
+					}
+				}
+			}
+
+		var http = new XMLHttpRequest();
+		var url = '/amend';
+		http.open('POST', url, true);
+
+		//Send the proper header information along with the request
+		 http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+
+		 http.onreadystatechange = function() {//Call a function when the state changes.
+		     if(http.readyState == 4 && http.status == 200) {
+		         alert(http.responseText);
+		     }
+		}
+		btn = JSON.stringify(btn);
+		btn1 = JSON.stringify(btn1);
+		console.log(btn);
+		console.log(btn1);
+		http.send("equipment="+btn+"&"+"question="+btn1);
+			
+		
+
+
+		}
+	</script>
+</body>
+</html>

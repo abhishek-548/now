@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="newentityequipment.css">
+	<style>
+		@import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
+body{
+	margin: 0px;
+	padding: 0px;
+	font-family: 'Montserrat', sans-serif;
+	background-color: #F0F6FF;
+}
+#name{
+	height: auto;
+	width: auto;
+	margin-top: 70px;
+	margin-left: 100px;
+}
+#span1{
+	font-weight: bold;
+	margin-left: 50px;
+}
+#input{
+	width: 650px;
+	height: 40px;
+	border: 2px solid #267DFF;
+	font-family: 'Montserrat', sans-serif;
+	margin-left: 130px;
+}
+#input:focus{
+	outline: none;
+}
+#selection{
+	margin-top: 60px;
+	display: flex;
+}
+#span2{
+	font-weight: bold;
+	margin-left: 150px;
+}
+#selectioncontainer{
+	flex: 1;
+	height: auto;
+	width: auto;
+	margin-left: 120px;
+}
+#container{
+	height: 150px;
+	overflow-y: scroll;
+	width: 650px;
+	border-radius: 12px;
+	background-color: white;
+	border:1px solid rgb(214, 216, 222);
+	box-shadow: rgba(43, 54, 72, 0.06) 0px 3px 5px 4px;
+}
+#container span{
+	cursor: pointer;
+	border: 2px solid #267DFF;
+	padding: 10px;
+	display: block;
+	width: 300px;
+	margin: auto;
+	text-align: center;
+}
+#container::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.1);
+	border-radius: 10px;
+	background-color: #F5F5F5;
+
+}
+
+#container::-webkit-scrollbar
+{
+	width: 8px;
+	background-color: #F5F5F5;
+}
+
+#container::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: #267DFF;
+}
+#answers{
+	margin-top: 60px;
+	display: flex;
+}
+#span3{
+	font-weight: bold;
+	margin-left: 150px;
+}
+#answerscontainer{
+	flex: 1;
+	height: auto;
+	width: auto;
+	margin-left: 180px;
+}
+#answersvalues{
+	height: 400px;
+	width: 600px;
+	overflow-y: scroll;
+	border-radius: 12px;
+	background-color: white;
+	font-family: 'Montserrat', sans-serif;
+	border: 1px solid rgb(214, 216, 222);
+	box-shadow: rgba(43, 54, 72, 0.06) 0px 3px 5px 4px;
+}
+#answersvalues::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.1);
+	border-radius: 10px;
+	background-color: #F5F5F5;
+
+}
+
+#answersvalues::-webkit-scrollbar
+{
+	width: 8px;
+	background-color: #F5F5F5;
+}
+
+#answersvalues::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: #267DFF;
+}
+#answersvalues p{
+	color: #267DFF;
+	margin-left: 50px;
+	font-weight: bold;
+	font-size: 20px;
+}
+#answersvalues textarea{
+	border-top-left-radius: 3px;
+	border-top-right-radius: 3px;
+	border: 2px solid #267DFF;
+	margin-left: 50px;
+	resize: none;
+}
+
+#answersvalues textarea{
+	outline: none;
+}
+
+#answersvalues textarea::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.1);
+	border-radius: 10px;
+	background-color: #F5F5F5;
+
+}
+
+#answersvalues textarea::-webkit-scrollbar
+{
+	width: 8px;
+	background-color: #F5F5F5;
+}
+
+#answersvalues textarea::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: #267DFF;
+}
+
+#submitbutton{
+	width: 200px;
+	height: 50px;
+	background-color: #267DFF;
+	color: white;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+@media screen and (max-width: 1000px){
+	#span1{
+		display: block;
+		margin: 10px;
+		margin-left: 5px;
+	}
+	#name{
+		margin: auto;
+    	margin-left: 0px;
+	}
+	#input{
+		width: 90%;
+		height: 40px;
+		border: 2px solid #267DFF;
+		margin-left: 5%;
+	}
+	#input:focus{
+		outline: none;
+	}
+	#selection{
+		display: block;
+	}
+	#span2{
+		margin: 10px;
+		margin-left: 5px;
+	}
+	#selectiontitle{
+		margin-bottom: 10px;
+	}
+	#selectioncontainer{
+		height: auto;
+		width: auto;
+		margin-left: 10px;
+	}
+	#container{
+		height: 200px;
+		overflow-y: scroll;
+		width: 90%;
+		border-radius: 12px;
+		background-color: white;
+		border:1px solid rgb(214, 216, 222);
+		box-shadow: rgba(43, 54, 72, 0.06) 0px 3px 5px 4px;
+		padding-left: 43px;
+	}
+	#container span{
+		text-align: center;
+		cursor: pointer;
+		display: inline-block;
+		border: 2px solid #267DFF;
+    	width: 90%;
+    	margin-left: 2px;
+		margin-bottom: 10px;
+	}
+  	#span3{
+		margin-left: 5px;
+	}
+	#answers{
+		display:block;
+	}
+	#answerscontainer{
+		height: auto;
+		width: auto;
+		margin-left: 15px;
+		margin-top: 10px;
+		width: 96%;
+	}
+	#answersvalues{
+		height: 400px;
+		width: 95%;
+		overflow-y: scroll;
+		border-radius: 12px;
+		background-color: white;
+		border: 1px solid rgb(214, 216, 222);
+		box-shadow: rgba(43, 54, 72, 0.06) 0px 3px 5px 4px;
+		padding-left: 16px;
+	}
+  	#answersvalues textarea{
+    	width: 97%;
+    	margin-left: 0px;
+  	}
+	
+}
+
+@media screen and (max-width: 800px){
+	#span1{
+		display: block;
+		margin: 10px;
+		margin-left: 5px;
+	}
+	#name{
+		margin: auto;
+    	margin-left: 0px;
+	}
+	#input{
+		width: 90%;
+		height: 40px;
+		border: 2px solid #267DFF;
+		margin-left: 5%;
+	}
+	#input:focus{
+		outline: none;
+	}
+	#selection{
+		display: block;
+	}
+	#span2{
+		margin: 10px;
+		margin-left: 5px;
+	}
+	#selectiontitle{
+		margin-bottom: 10px;
+	}
+	#selectioncontainer{
+		height: auto;
+		width: auto;
+		margin-left: 10px;
+	}
+	#container{
+		height: 200px;
+		overflow-y: scroll;
+		width: 90%;
+		border-radius: 12px;
+		background-color: white;
+		border:1px solid rgb(214, 216, 222);
+		box-shadow: rgba(43, 54, 72, 0.06) 0px 3px 5px 4px;
+		padding-left: 28px;
+	}
+	#container span{
+		text-align: center;
+		cursor: pointer;
+		display: inline-block;
+		border: 2px solid #267DFF;
+    	width: 90%;
+    	margin-left: 2px;
+		margin-bottom: 10px;
+	}
+  	#span3{
+		margin-left: 5px;
+	}
+	#answers{
+		display:block;
+	}
+	#answerscontainer{
+		height: auto;
+		width: auto;
+		margin-left: 15px;
+		width: 95%;
+		margin-top: 10px;
+	}
+	#answersvalues{
+		height: 400px;
+		width: 95%;
+		overflow-y: scroll;
+		border-radius: 12px;
+		background-color: white;
+		border: 1px solid rgb(214, 216, 222);
+		box-shadow: rgba(43, 54, 72, 0.06) 0px 3px 5px 4px;
+		padding-left: 10px;
+	}
+  	#answersvalues textarea{
+    	width: 97%;
+    	margin-left: 0px;
+  	}
+	
+}
+
+@media screen and (max-width: 600px){
+	#span1{
+		display: block;
+		margin: 10px;
+		margin-left: 5px;
+	}
+	#name{
+		margin: auto;
+    	margin-left: 0px;
+	}
+	#input{
+		width: 90%;
+		height: 40px;
+		border: 2px solid #267DFF;
+    	/* margin-left: 15px; */
+		margin-left: 5%;
+	}
+	#input:focus{
+		outline: none;
+	}
+	#selection{
+		display: block;
+	}
+	#span2{
+		margin: 10px;
+		margin-left: 5px;
+	}
+	#selectiontitle{
+		margin-bottom: 10px;
+	}
+	#selectioncontainer{
+		/*flex: 1;*/
+		height: auto;
+		width: auto;
+		/* margin-left: 60px; */
+		margin-left: 10px;
+	}
+	#container{
+		height: 200px;
+		overflow-y: scroll;
+		width: 90%;
+		border-radius: 12px;
+		background-color: white;
+		border:1px solid rgb(214, 216, 222);
+		box-shadow: rgba(43, 54, 72, 0.06) 0px 3px 5px 4px;
+		padding-left: 10px;
+	}
+	#container span{
+		text-align: center;
+		cursor: pointer;
+		display: inline-block;
+		border: 2px solid #267DFF;
+		/* padding: 10px; */
+		/* width: 230px; */
+    	width: 90%;
+    	margin-left: 2px;
+		margin-bottom: 10px;
+	}
+  	#span3{
+		margin-left: 5px;
+	}
+	#answers{
+		display:block;
+	}
+	#answerscontainer{
+		height: auto;
+		width: auto;
+		margin-left: 15px;
+	}
+	#answersvalues{
+		height: 400px;
+		width: 95%;
+		overflow-y: scroll;
+		border-radius: 12px;
+		background-color: white;
+		border: 1px solid rgb(214, 216, 222);
+		box-shadow: rgba(43, 54, 72, 0.06) 0px 3px 5px 4px;
+	}
+  	#answersvalues textarea{
+    	width: 97%;
+    	margin-left: 0px;
+  	}
+	
+}
+	</style>
+</head>
+<body>
+	<br>
+	<div id="name">
+		<span id="span1">NAME OF EQUIPMENT :</span>
+		<input id="input" placeholder="Enter Equipment Name" type="text" name="">
+	</div>
+	<div id="selection">
+		<div id="selectiontitle">
+			<span id="span2">SELECT QUESTION TITLE :</span>
+		</div>
+		<div id="selectioncontainer">
+			<div id="container">
+				<% var arr=[]%>
+				<% for(var i=0;i<data.length;i++){ %>
+						<% var v = data[i].intent %>
+						<% v = v.replace("c_","") %>
+						<% if(! arr.includes(v)){ %>
+							<% arr.push(v) %>
+							<br>
+							<span id="spancheck" onclick="fun(this)">
+								<%= v %>
+							</span>
+						<%}%>
+				<%}%>
+			</div>
+		</div>
+	</div>
+	<div id="answers">
+		<div id="enterans">
+			<span id="span3">ENTER ANSWERS :</span>
+		</div>
+		<div id="answerscontainer">
+			<div id="answersvalues">
+				
+			</div>
+		</div>
+	</div>
+	<br><br>
+	<div style="text-align: center;">
+	<button id="submitbutton" onclick="send()">
+		Submit
+	</button>
+	</div>
+	<br><br><br>
+
+
+	<script type="text/javascript">
+		function fun(element){
+		if(element.style.color!="white"){
+			element.style.color = "white";
+			element.style.backgroundColor = "#267DFF";
+			var val = element.firstChild.nodeValue;
+			var parent =document.getElementById("answersvalues");
+			var d = document.createElement("DIV");
+			var d1 = document.createElement("DIV");
+			var dparent = document.createElement("DIV");
+			d1.setAttribute("class","links");
+			d.setAttribute("class","divs");
+			dparent.setAttribute("class","maindivs");
+			var input = document.createElement("textarea");
+			var input1 = document.createElement("textarea");
+			input.cols = "70";
+			input.rows = "8";
+			input1.rows = "3";
+			input1.cols = "70";
+			input1.placeholder = "Enter Links here.."
+			input.placeholder = "Enter your answer here.."
+			var p = document.createElement("P");
+			p.innerText = val;
+			d.appendChild(p);
+			d1.appendChild(input1);
+			d.appendChild(input);
+			dparent.appendChild(d);
+			dparent.appendChild(d1);
+			parent.appendChild(dparent);
+		}
+		else{
+			var val = element.firstChild.nodeValue;
+			element.style.color = "black";
+			element.style.backgroundColor = "white";
+			var x = document.getElementsByClassName("divs");
+			var x1 = document.getElementsByClassName("links");
+			var x0 = document.getElementsByClassName("maindivs");
+			for(var i=0;i<x.length;i++){
+				y = x[i];
+				var val1 = y.firstChild.innerText.trim();
+				val = val.trim();
+				if(val1==val){
+					x[i].remove();
+					x1[i].remove();
+					x0[i].remove();
+				}
+			}
+		}
+	}
+
+
+	function send(){
+		var input = document.getElementById("input").value;
+		input = "intent_"+input
+		var btn = [];
+		var acess = document.getElementById("answersvalues");
+		for(var i=1;i<acess.childNodes.length;i++){
+			var acessin = acess.childNodes[i];
+			var dict = {};
+			var name = acessin.childNodes[0].childNodes[0].innerText.trim().replace(" ","");
+			name = "c_"+name
+			dict["name"] = input;
+			dict["content"]=acessin.childNodes[0].childNodes[1].value;
+			dict["link"] = acessin.childNodes[1].childNodes[0].value;
+			dict["intent"] = name
+			btn.push(dict);
+		}
+		var http = new XMLHttpRequest();
+		var url = '/entity';
+		http.open('POST', url, true);
+
+		//Send the proper header information along with the request
+		 http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+
+		 http.onreadystatechange = function() {//Call a function when the state changes.
+		     if(http.readyState == 4 && http.status == 200) {
+		         alert(http.responseText);
+		     }
+		}
+		var que="";
+		btn = JSON.stringify(btn);
+		console.log(btn)
+
+		http.send("intent="+input+"&"+"answer="+btn);
+	}
+
+	function test(){
+        alert("successfully added entity");
+    }
+
+	</script>
+</body>
+</html>

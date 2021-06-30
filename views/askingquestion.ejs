@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="\askingquestion.css">
+</head>
+<body>
+	<br>
+	<input id="inputtag" required placeholder="Enter Your Question here" onkeyup="spacevalidator()">
+	<br><br><br>
+	<div class="maincontainer">
+		<div id="left">
+			<h5 id="enterques">Enter Your Question :</h5>
+			<div id="inputtext">
+				<textarea onkeyup="myFunction()" id="myInput" rows="2" data-gramm="false" class="text" placeholder="Type your question here" ></textarea>
+				<button onclick="que()" id="questionadd">
+					Add
+				</button>
+			</div>
+			<div class="results">
+				<% for(var i=0;i<data[2].length;i++){ %>
+					<p class="pclass" onclick="col(this)">
+						<%= data[2][i].question %>
+					</p>
+				<%}%>
+			</div>
+		</div>
+		<div id="right">
+			<h5>Select relevant equipment :</h5>
+			<div id="equipmentslist">
+				<br>
+				<label id="labeldepartment" for="department">Filter Here : </label> 
+				<select onchange="department(value)" name="department" id="buttonfilter">
+					<option value="All">All</option>
+				  <% var arr = [] %>
+				  <% for(var i=0;i<data[1].length;i++){%>
+				  	<% var dep = JSON.parse(data[1][i].department) %>
+				  	<%  Object.keys(dep).forEach(function(key){%>
+				  		<% if(! arr.includes(key)){ %>
+				  			<% arr.push(key) %>
+    						<option value="<%= key %>"> <%= key %></option>
+
+    					<%}%>
+   					<% }) %>
+   					<%}%>
+				</select>
+				<br><br>
+				<div id="inputandbutton">
+					<input type="text" name="" placeholder="Enter Department" id="inputinequipments1">
+					<br><br>
+
+					<input onkeyup="searchinequipment()" type="text" name="" placeholder="Add or Search Equipment" id="inputinequipments">
+					<button onclick="addequipment()" id="buttonequipments">
+						Add
+					</button>
+				</div>
+				<br>
+				<% var arr1 = []%>
+				<% for(var i=0;i<data[1].length;i++){%>
+					<% var x = JSON.parse(data[1][i].department) %>
+					<%  Object.keys(x).forEach(function(key){%>
+				  		<% var val = x[key] %>
+				  		<%for(var j=0;j<val.length;j++){%>
+				  			<span class="<%= key %> equipmentsclass" onclick="fun(this)">
+							<%= val[j] %>
+							</span>
+				  		<%}%>
+   					<% }) %>
+				<%}%> 
+				 
+			</div>
+		</div>
+	</div>
+	<br><br>
+	<h5 style="margin-left: 50px;">Enter answers :</h5>
+	<div id="answers">
+		
+	</div>
+	<br><br>
+	<div style="text-align: center;">
+	<button id="submitbutton" onclick="send(),window.location.reload()">
+		Submit
+	</button>
+	</div>
+	
+	<br><br><br>
+
+
+
+
+
+<script type="text/javascript">
+	function department(element){
+		var name = '<%-arr%>'
+		name = name.split(",");			
+		if(!(element=="All")){
+		for(var i=0;i<name.length;i++){
+			element = element.trim()
+			name[i] = name[i].trim()
+			console.log(name[i],element)			
+			if(!(element==name[i])){
+				var value = document.getElementsByClassName(name[i])
+				for(var j=0;j<value.length;j++){
+					value[j].style.display = "none";
+				}
+			}
+			var value1 = document.getElementsByClassName(element);
+			for(var k=0;k<value1.length;k++){
+					value1[k].style.display = "";
+				}
+		}
+	}
+	else{
+		for(var i=0;i<name.length;i++){
+			var x = document.getElementsByClassName(name[i]);
+			for(var j=0;j<x.length;j++){
+				x[j].style.display = "";
+			}
+		}
+	}
+	}
+
+
+	var dictdepartment = {};
+	function searchinequipment(){
+		var input = document.getElementById("inputinequipments");
+		var filter;
+		filter = input.value.toUpperCase();
+		var se = document.getElementsByClassName("equipmentsclass");
+		for (i = 0; i < se.length; i++) {
+        	a = se[i];
+        	txtValue = a.textContent || a.innerText;
+        	if (txtValue.toUpperCase().indexOf(filter) > -1){
+            	se[i].style.display = "";
+        	} else {
+            	se[i].style.display = "none";
+        	}
+    	}
+		
+	}
+	// adding equipment from input
+	function addequipment(){
+		var x = document.getElementById("inputinequipments").value;
+		var key = document.getElementById("inputinequipments1").value;
+			if(x.length==0){
+				document.getElementById("inputinequipments").style.borderColor = "red"
+			}
+			else if(key.length==0){
+				document.getElementById("inputinequipments1").style.borderColor = "red"
+			}
+			else{
+
+				document.getElementById("inputinequipments").style.borderColor = "#267DFF"
+
+				document.getElementById("inputinequipments1").style.borderColor = "#267DFF"
+
+				if(key in dictdepartment){
+					dictdepartment[key].push(x);
+				}
+				else{
+					var array = [];
+					array.push(x);
+					dictdepartment[key] = array;
+				}
+				document.getElementById("inputinequipments").value = "";
+				document.getElementById("inputinequipments1").value = "";
+				var s = document.createElement("SPAN");
+				s.innerHTML = x;
+				s.setAttribute("class","equipmentsclass");
+				s.addEventListener("click", function() { fun(this); });
+				var parent = document.getElementById("equipmentslist");
+				parent.appendChild(s);
+				searchinequipment();
+			}
+	}
+
+	// validating space in top input
+	function spacevalidator(){
+		input = document.getElementById("inputtag").value;
+		// console.log(input);
+		if(input.includes(" ")){
+			var x;
+			x = document.getElementById("inputtag").value;
+			x = x.replace(" ","");
+			document.getElementById("inputtag").value = x;
+		}
+	}
+
+
+
+	//changing the color of sentences
+	function col(element){
+		if(element.style.color!="white"){
+			element.style.color = "white";
+			element.style.backgroundColor = "#267DFF";
+		}
+		else{
+			element.style.color = "black";
+			element.style.backgroundColor = "white";
+		}
+	}
+
+	//searching through the questions
+	function myFunction() {
+    var input, filter, ul, li, a, i, txtValue;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    ul = document.getElementsByClassName("results");
+    li = document.getElementsByClassName("pclass");
+    for (i = 0; i < li.length; i++) {
+        a = li[i];
+        txtValue = a.textContent || a.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1){
+            li[i].style.display = "";
+        } else {
+            li[i].style.display = "none";
+        }
+    	}
+	}
+	
+	//Addign answer when button clicked
+	function fun(element){
+		if(element.style.color!="white"){
+			element.style.color = "white";
+			element.style.backgroundColor = "#267DFF";
+			var val = element.firstChild.nodeValue;
+			var parent = document.getElementById("answers");
+			var d = document.createElement("DIV");
+			var d1 = document.createElement("DIV");
+			var dparent = document.createElement("DIV");
+			d1.setAttribute("class","links")
+			d.setAttribute("class","divs")
+			dparent.setAttribute("class","maindivs");
+			var input = document.createElement("textarea");
+			var input1 = document.createElement("textarea");
+			input.cols = "70";
+			input.rows = "8";
+			input1.rows = "3";
+			input1.cols = "70";
+			input1.placeholder = "Enter Links here.."
+			input.placeholder = "Enter your answer here.."
+			var p = document.createElement("P");
+			p.innerText = val;
+			d.appendChild(p);
+			d1.appendChild(input1)
+			d.appendChild(input);
+			dparent.appendChild(d);
+			dparent.appendChild(d1);
+			parent.appendChild(dparent);
+		}
+		else{
+			var val = element.firstChild.nodeValue;
+			element.style.color = "black";
+			element.style.backgroundColor = "white";
+			var x = document.getElementsByClassName("divs");
+			var x1 = document.getElementsByClassName("links");
+			var x0 = document.getElementsByClassName("maindivs");
+			for(var i=0;i<x.length;i++){
+				y = x[i];
+				var val1 = y.firstChild.innerText.trim();
+				val = val.trim();
+				if(val1==val){
+					x[i].remove();
+					x1[i].remove();
+					x0[i].remove();
+				}
+			}
+		}
+	}
+
+	//when question is added
+	function que(){
+		var inp = document.getElementById("myInput").value;
+		if(inp.length==0){
+			document.getElementById("inputtext").style.borderColor = "red"
+		}
+		else{
+		document.getElementById("inputtext").style.borderColor = "#d6d8de"
+		document.getElementById("myInput").value = "";
+
+		var pclass = document.getElementsByClassName("results")
+		var ptag = document.createElement("P");
+		ptag.innerText = inp;
+		ptag.setAttribute("class","pclass")
+		ptag.onclick = function(){
+			col(this);
+		}
+		pclass[0].appendChild(ptag)
+
+		var http = new XMLHttpRequest();
+		var url = '/individualquestion';
+		http.open('POST', url, true);
+
+		//Send the proper header information along with the request
+		 http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+
+		 http.onreadystatechange = function() {//Call a function when the state changes.
+		     if(http.readyState == 4 && http.status == 200) {
+		         alert(http.responseText);
+		     }
+		} 
+		http.send("individualquestion="+inp);
+		myFunction()
+	}
+
+
+	}
+
+
+	// when the submit button is clicked
+	function send(){
+		var dictonary = {};
+		var key = document.getElementById("inputtag").value;
+		var array = [];
+		var send = "- intent: ";
+		var btn = [];
+		send =send+document.getElementById("myInput").value+"\n";
+		send = send+"  ";
+		send+="examples: |\n";
+		var x = document.getElementsByClassName("results")[0].childNodes;	
+		for(var i = 1;i<x.length;i = i+2){
+			if(x[i].style.color=="white"){
+				send = send+"    ";
+				send = send+"- "+x[i].innerText+"\n";
+				array.push(x[i].innerText);
+			}
+		}
+		dictonary[key] = array
+		var acess = document.getElementById("answers");
+		for(var i=1;i<acess.childNodes.length;i++){
+			var acessin = acess.childNodes[i];
+			var dict = {};
+			var name = acessin.childNodes[0].childNodes[0].innerText.trim().replace(" ","");
+			dict["name"]="intent_"+name;
+			dict["content"]=acessin.childNodes[0].childNodes[1].value;
+			dict["link"] = acessin.childNodes[1].childNodes[0].value;
+			btn.push(dict);
+		}
+		var http = new XMLHttpRequest();
+		var url = '/question';
+		http.open('POST', url, true);
+
+		//Send the proper header information along with the request
+		 http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+
+		 http.onreadystatechange = function() {//Call a function when the state changes.
+		     if(http.readyState == 4 && http.status == 200) {
+		         alert(http.responseText);
+		     }
+		}
+		var v;
+		if(btn.length>0){
+			v = "c_";
+		}
+		else{
+			v = "";
+		}
+		var question = document.getElementById("myInput").value;
+		v+= document.getElementById("inputtag").value;
+		console.log("hello");
+		btn = JSON.stringify(btn)
+		dictonary = JSON.stringify(dictonary)
+		dictdepartment = JSON.stringify(dictdepartment)
+		console.log("This is dict")
+		http.send("text="+send+"&"+"button="+btn+"&"+"input="+v+"&"+"question="+question+"&"+"department="+dictdepartment+"&"+"dictonary="+dictonary);
+
+	}
+
+
+</script>
+</body>
+</html>
